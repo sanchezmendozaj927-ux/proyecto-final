@@ -1,11 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<title>Mi Proyecto Final</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/estilos.css">
+<title>SoundPulse</title>
 </head>
-<body>
-<h1>Hola, este es mi proyecto final</h1>
-<p>Alumno: sanchezmendozaj927-ux</p>
-<p>Trabajo de evaluación</p>
+<body class="login-body">
+<div class="login-box">
+<h1>SoundPulse 🎧</h1>
+<input type="text" id="usuario" placeholder="Usuario">
+<input type="password" id="pass" placeholder="Contraseña">
+<button onclick="login()">Entrar</button>
+<p style="font-size:12px; margin-top:10px;">Prueba: admin / 1234</p>
+</div>
+
+<script>
+// BASE DE DATOS FALSA
+const usuariosDB = [
+  { usuario: "admin", pass: "1234" },
+  { usuario: "jimena", pass: "1234" }
+];
+
+function login(){
+  let u = document.getElementById("usuario").value;
+  let p = document.getElementById("pass").value;
+
+  let existe = usuariosDB.find(x => x.usuario === u && x.pass === p);
+
+  if(existe){
+    localStorage.setItem("usuarioLogeado", u);
+    window.location.href = "tienda.html";
+  } else {
+    alert("Usuario o contraseña mal. Usa admin / 1234");
+  }
+}
+</script>
 </body>
 </html>
